@@ -1,6 +1,6 @@
 FROM python:3-alpine
 
-ENV FLASK_APP=app.py
+ENV FLASK_APP=app
 ENV FLASK_ENV=development
 
 WORKDIR /app

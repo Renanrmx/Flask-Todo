@@ -4,22 +4,25 @@ services:
     container_name: todo_list
     build: .
     environment:
-      FLASK_APP: app.py
+      FLASK_APP: app
       FLASK_ENV: development
       FLASK_RUN_HOST: 0.0.0.0
     volumes:
       - ./app:/app
+      - ./data:/data
     ports:
       - "5000:5000"
+    depends_on:
+      - db
 
   db:
     container_name: sqlite_db
     image: alpine:latest
     stdin_open: true
     volumes:
-      - ./database:/data
+      - ./data:/data
     environment:
       - SQLITE_DATABASE=/data/todo.db
 
 volumes:
-  database:
+  data:
